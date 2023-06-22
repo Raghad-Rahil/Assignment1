@@ -5,18 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@drawable/img3">
+    tools:context=".MainActivity">
+
+
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginLeft="10px"
+        android:layout_marginTop="150px"
+        app:srcCompat="@drawable/img" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_marginTop="600px"
+        android:textSize="100px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAlignment="center" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
-        android:layout_width="300dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="320dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="620dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/white_button"
         android:text="Start"
-        style="?android:attr/borderlessButtonStyle"
         android:textColor="#7C7C7C"
         android:textSize="30dp" />
 

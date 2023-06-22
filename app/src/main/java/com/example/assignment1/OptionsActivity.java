@@ -10,8 +10,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.assignment1.model.DAOperation;
-import com.example.assignment1.model.Operation;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,20 +27,38 @@ public class OptionsActivity extends AppCompatActivity {
 //    TextView textView;
     Spinner Spinner1;
     Spinner Spinner2;
-    private ListView lview ;
+//    private ListView lview ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
+
+        RecyclerView recycler = findViewById(R.id.my_recycler);
+        String[] op = new String[oper.opers.length];
+        String[] type = new String[oper.opers.length];
+        String[] level = new String[oper.opers.length];
+
+        for(int i = 0; i<op.length;i++){
+            op[i] = oper.opers[i].getOp();
+            type[i] = oper.opers[i].getType();
+            level[i] = oper.opers[i].getLevel();
+        }
+
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+        myAdapter adapter = new myAdapter(op, type, level);
+        recycler.setAdapter(adapter);
+
+
+/*
         finish = (Button) findViewById(R.id.btn4);
         done = (Button) findViewById(R.id.btn3);
 //        editText = (EditText) findViewById(R.id.txt);
 //        textView = (TextView) findViewById(R.id.txtView);
         Spinner1 = (Spinner) findViewById(R.id.spinner1);
         Spinner2 = (Spinner) findViewById(R.id.spinner2);
-        lview= (ListView) findViewById(R.id.lst);
+//        lview= (ListView) findViewById(R.id.lst);
 
         DAOperation oper=new DAOperation();
 
@@ -58,9 +79,9 @@ public class OptionsActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //To clear old content
-                lview.deferNotifyDataSetChanged();
-                lview.invalidateViews();
-                lview.refreshDrawableState();
+//                lview.deferNotifyDataSetChanged();
+//                lview.invalidateViews();
+//                lview.refreshDrawableState();
 
                 List<Operation> list=oper.getOp(Spinner1.getSelectedItem().toString(),Spinner2.getSelectedItem().toString());
                 ArrayList<String> s=new ArrayList();
@@ -70,7 +91,7 @@ public class OptionsActivity extends AppCompatActivity {
                 }
                 ArrayAdapter<String > bAd=new ArrayAdapter<>(OptionsActivity.this,
                         androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,s);
-                lview.setAdapter(bAd);
+//                lview.setAdapter(bAd);
 
             }
         });
@@ -85,7 +106,7 @@ public class OptionsActivity extends AppCompatActivity {
                 finish();
 
             }
-        });
+        });*/
 
     }
 
